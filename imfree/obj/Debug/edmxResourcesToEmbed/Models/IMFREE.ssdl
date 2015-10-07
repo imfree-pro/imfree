@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMFREEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AcceptedUser">
+    <Key>
+      <PropertyRef Name="suggestsn" />
+    </Key>
+    <Property Name="suggestsn" Type="bigint" Nullable="false" />
+    <Property Name="hashphone" Type="varchar" MaxLength="512" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categorysn" />
+    </Key>
+    <Property Name="categorysn" Type="bigint" Nullable="false" />
+    <Property Name="categoryname" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="iconfilename" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="usersn" />
+      <PropertyRef Name="hashphone" />
+    </Key>
+    <Property Name="usersn" Type="bigint" Nullable="false" />
+    <Property Name="hashphone" Type="varchar" MaxLength="512" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomReport">
+    <Key>
+      <PropertyRef Name="reportsn" />
+    </Key>
+    <Property Name="reportsn" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="report" Type="text" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="logsn" />
+    </Key>
+    <Property Name="logsn" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ip" Type="varchar" MaxLength="15" />
+    <Property Name="uri" Type="varchar" MaxLength="1024" />
+    <Property Name="source" Type="varchar" MaxLength="1024" />
+    <Property Name="method" Type="varchar" MaxLength="50" />
+    <Property Name="dtcreate" Type="datetime" />
+    <Property Name="error" Type="varchar" MaxLength="512" />
+    <Property Name="trace" Type="text" />
+    <Property Name="json" Type="text" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="categorysn" />
+      <PropertyRef Name="itemsn" />
+    </Key>
+    <Property Name="categorysn" Type="tinyint" Nullable="false" />
+    <Property Name="itemsn" Type="tinyint" Nullable="false" />
+    <Property Name="itemname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cardfilename" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PrivateUser">
+    <Key>
+      <PropertyRef Name="suggestsn" />
+      <PropertyRef Name="hashphone" />
+    </Key>
+    <Property Name="suggestsn" Type="bigint" Nullable="false" />
+    <Property Name="hashphone" Type="varchar" MaxLength="512" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suggest">
+    <Key>
+      <PropertyRef Name="suggestsn" />
+    </Key>
+    <Property Name="suggestsn" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usersn" Type="bigint" Nullable="false" />
+    <Property Name="hashphone" Type="varchar" MaxLength="512" />
+    <Property Name="createdate" Type="datetime" Nullable="false" />
+    <Property Name="updatedate" Type="datetime" Nullable="false" />
+    <Property Name="categorysn" Type="tinyint" Nullable="false" />
+    <Property Name="itemsn" Type="tinyint" Nullable="false" />
+    <Property Name="acceptedusercount" Type="int" Nullable="false" />
+    <Property Name="cancelled" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="usersn" />
+    </Key>
+    <Property Name="usersn" Type="bigint" Nullable="false" />
+    <Property Name="guid" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="accesstoken" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="hashphone" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="deviceid" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="pushkey" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="createdate" Type="datetime" Nullable="false" />
+    <Property Name="updatedate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Function Name="CategoryCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categoryname" Type="nvarchar" Mode="In" />
+    <Parameter Name="iconfilename" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CategoryDataInit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CategoryDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CategoryGetInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CategoryGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CategoryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categorysn" Type="tinyint" Mode="In" />
+    <Parameter Name="categoryname" Type="nvarchar" Mode="In" />
+    <Parameter Name="iconfilename" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CategoryWithItemGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ContactsCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usersn" Type="bigint" Mode="In" />
+    <Parameter Name="hashphone" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ContactsInstallUserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usersn" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="CustomReportCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Report" Type="text" Mode="In" />
+  </Function>
+  <Function Name="CustomReportGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ErrorLogCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ip" Type="varchar" Mode="In" />
+    <Parameter Name="uri" Type="varchar" Mode="In" />
+    <Parameter Name="source" Type="varchar" Mode="In" />
+    <Parameter Name="method" Type="varchar" Mode="In" />
+    <Parameter Name="error" Type="varchar" Mode="In" />
+    <Parameter Name="trace" Type="text" Mode="In" />
+    <Parameter Name="json" Type="text" Mode="In" />
+  </Function>
+  <Function Name="ErrorLogGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ItemCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categorysn" Type="tinyint" Mode="In" />
+    <Parameter Name="itemname" Type="nvarchar" Mode="In" />
+    <Parameter Name="cardfilename" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ItemGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categorysn" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="PrivateUserCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="suggestsn" Type="bigint" Mode="In" />
+    <Parameter Name="hashphone" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SuggestCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="suggestsn" Type="bigint" Mode="InOut" />
+    <Parameter Name="usersn" Type="bigint" Mode="In" />
+    <Parameter Name="hashphone" Type="varchar" Mode="In" />
+    <Parameter Name="categorysn" Type="tinyint" Mode="In" />
+    <Parameter Name="itemsn" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="SuggestDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usersn" Type="bigint" Mode="In" />
+    <Parameter Name="suggestsn" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="SuggestFriendList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usersn" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="SuggestMyList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usersn" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="UserCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accesstoken" Type="varchar" Mode="In" />
+    <Parameter Name="guid" Type="char" Mode="In" />
+    <Parameter Name="hashphone" Type="varchar" Mode="In" />
+    <Parameter Name="deviceid" Type="char" Mode="In" />
+    <Parameter Name="pushkey" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UserGetInfoByToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accesstoken" Type="varchar" Mode="In" />
+    <Parameter Name="usersn" Type="bigint" Mode="InOut" />
+    <Parameter Name="guid" Type="char" Mode="InOut" />
+    <Parameter Name="hashphone" Type="varchar" Mode="InOut" />
+    <Parameter Name="deviceid" Type="char" Mode="InOut" />
+    <Parameter Name="pushkey" Type="varchar" Mode="InOut" />
+    <Parameter Name="createdate" Type="datetime" Mode="InOut" />
+    <Parameter Name="updatedate" Type="datetime" Mode="InOut" />
+  </Function>
+  <Function Name="UserGetInfoByusersn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usersn" Type="bigint" Mode="In" />
+    <Parameter Name="accesstoken" Type="varchar" Mode="InOut" />
+    <Parameter Name="guid" Type="char" Mode="InOut" />
+    <Parameter Name="hashphone" Type="varchar" Mode="InOut" />
+    <Parameter Name="deviceid" Type="char" Mode="InOut" />
+    <Parameter Name="pushkey" Type="varchar" Mode="InOut" />
+    <Parameter Name="createdate" Type="datetime" Mode="InOut" />
+    <Parameter Name="updatedate" Type="datetime" Mode="InOut" />
+  </Function>
+  <Function Name="UserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accesstoken" Type="varchar" Mode="In" />
+    <Parameter Name="guid" Type="char" Mode="In" />
+    <Parameter Name="hashphone" Type="varchar" Mode="In" />
+    <Parameter Name="deviceid" Type="char" Mode="In" />
+    <Parameter Name="pushkey" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="IMFREEModelStoreContainer">
+    <EntitySet Name="AcceptedUser" EntityType="Self.AcceptedUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomReport" EntityType="Self.CustomReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrivateUser" EntityType="Self.PrivateUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suggest" EntityType="Self.Suggest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

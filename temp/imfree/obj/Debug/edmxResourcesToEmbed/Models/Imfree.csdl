@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMFREEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CallUsers">
+    <Key>
+      <PropertyRef Name="EventSN" />
+    </Key>
+    <Property Name="EventSN" Type="Int64" Nullable="false" />
+    <Property Name="UserSN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="UsersSN" />
+    </Key>
+    <Property Name="UsersSN" Type="Int64" Nullable="false" />
+    <Property Name="PhoneHash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="EventsN" />
+    </Key>
+    <Property Name="EventsN" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Catogory" Type="Byte" Nullable="false" />
+    <Property Name="CatogoryName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CallCount" Type="Int32" Nullable="false" />
+    <Property Name="PhoneHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsDelete" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InstallUsers">
+    <Key>
+      <PropertyRef Name="UserSN" />
+    </Key>
+    <Property Name="UserSN" Type="Int64" Nullable="false" />
+    <Property Name="UserSN_Object" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserEvents">
+    <Key>
+      <PropertyRef Name="UserSN" />
+      <PropertyRef Name="EventsN" />
+    </Key>
+    <Property Name="UserSN" Type="Int64" Nullable="false" />
+    <Property Name="EventsN" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserSN" />
+    </Key>
+    <Property Name="UserSN" Type="Int64" Nullable="false" />
+    <Property Name="PhoneHash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PushKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DeviceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="IMFREEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CallUsers" EntityType="Self.CallUsers" />
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" />
+    <EntitySet Name="Events" EntityType="Self.Events" />
+    <EntitySet Name="InstallUsers" EntityType="Self.InstallUsers" />
+    <EntitySet Name="UserEvents" EntityType="Self.UserEvents" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <FunctionImport Name="ContactCreate">
+      <Parameter Name="UsersSN" Mode="In" Type="Int64" />
+      <Parameter Name="PhoneHash" Mode="In" Type="String" />
+      <Parameter Name="PhoneName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ContactGetInfo" ReturnType="Collection(IMFREEModel.ContactGetInfo_Result)">
+      <Parameter Name="UsersSN" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="ContactGetList" ReturnType="Collection(IMFREEModel.ContactGetList_Result)">
+      <Parameter Name="UsersSN" Mode="In" Type="Int64" />
+      <Parameter Name="TotalCount" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ContactUpdate">
+      <Parameter Name="UsersSN" Mode="In" Type="Int64" />
+      <Parameter Name="PhoneHash" Mode="In" Type="String" />
+      <Parameter Name="PhoneName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EventCreate">
+      <Parameter Name="Catogory" Mode="In" Type="Byte" />
+      <Parameter Name="CatogoryName" Mode="In" Type="String" />
+      <Parameter Name="PhoneHash" Mode="In" Type="String" />
+      <Parameter Name="EventSN" Mode="InOut" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="EventGetInfo">
+      <Parameter Name="EventSN" Mode="In" Type="Int64" />
+      <Parameter Name="CreateDate" Mode="InOut" Type="DateTime" />
+      <Parameter Name="UpdateDate" Mode="InOut" Type="DateTime" />
+      <Parameter Name="Catogory" Mode="InOut" Type="Byte" />
+      <Parameter Name="CatogoryName" Mode="InOut" Type="String" />
+      <Parameter Name="CallCount" Mode="InOut" Type="Int32" />
+      <Parameter Name="PhoneHash" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EventGetList" ReturnType="Collection(IMFREEModel.EventGetList_Result)">
+      <Parameter Name="TotalCount" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EventUpdate">
+      <Parameter Name="EventSN" Mode="In" Type="Int64" />
+      <Parameter Name="Catogory" Mode="In" Type="Byte" />
+      <Parameter Name="CatogoryName" Mode="In" Type="String" />
+      <Parameter Name="CallCount" Mode="In" Type="Int32" />
+      <Parameter Name="PhoneHash" Mode="In" Type="String" />
+      <Parameter Name="IsDelete" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="InstallUserCreate">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="UserSN_Object" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="InstallUserGetInfo">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="UserSN_Object" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="InstallUserGetList" ReturnType="Collection(IMFREEModel.InstallUserGetList_Result)">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="TotalCount" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InstallUserUpdate">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="UserSN_Object" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="UserCreate">
+      <Parameter Name="PhoneHash" Mode="In" Type="String" />
+      <Parameter Name="PushKey" Mode="In" Type="String" />
+      <Parameter Name="DeviceID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserEventCreate">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="Catogory" Mode="In" Type="Byte" />
+      <Parameter Name="CatogoryName" Mode="In" Type="String" />
+      <Parameter Name="PhoneHash" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserEventGetInfo">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="EventSN" Mode="In" Type="Int64" />
+      <Parameter Name="CreateDate" Mode="InOut" Type="DateTime" />
+      <Parameter Name="UpdateDate" Mode="InOut" Type="DateTime" />
+      <Parameter Name="Catogory" Mode="InOut" Type="Byte" />
+      <Parameter Name="CatogoryName" Mode="InOut" Type="String" />
+      <Parameter Name="CallCount" Mode="InOut" Type="Int32" />
+      <Parameter Name="PhoneHash" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserEventGetList" ReturnType="Collection(IMFREEModel.UserEventGetList_Result)">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="TotalCount" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UserEventUpdate">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="EventSN" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="UserGetInfo">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="PhoneHash" Mode="InOut" Type="String" />
+      <Parameter Name="CreateDate" Mode="InOut" Type="DateTime" />
+      <Parameter Name="UpdateDate" Mode="InOut" Type="DateTime" />
+      <Parameter Name="PushKey" Mode="InOut" Type="String" />
+      <Parameter Name="DeviceID" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserGetList" ReturnType="Collection(IMFREEModel.UserGetList_Result)">
+      <Parameter Name="TotalCount" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UserUpdate">
+      <Parameter Name="UserSN" Mode="In" Type="Int64" />
+      <Parameter Name="PhoneHash" Mode="In" Type="String" />
+      <Parameter Name="PushKey" Mode="In" Type="String" />
+      <Parameter Name="DeviceID" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ContactGetInfo_Result">
+    <Property Type="String" Name="PhoneHash" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PhoneName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ContactGetList_Result">
+    <Property Type="Int64" Name="UsersSN" Nullable="false" />
+    <Property Type="String" Name="PhoneHash" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PhoneName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="EventGetList_Result">
+    <Property Type="Int64" Name="EventSN" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="UpdateDate" Nullable="false" Precision="23" />
+    <Property Type="Byte" Name="Catogory" Nullable="false" />
+    <Property Type="String" Name="CatogoryName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="PhoneHash" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="InstallUserGetList_Result">
+    <Property Type="Int64" Name="UserSN" Nullable="false" />
+    <Property Type="Int64" Name="UserSN_Object" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserEventGetList_Result">
+    <Property Type="Int64" Name="UserSN" Nullable="false" />
+    <Property Type="Int64" Name="EventSN" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="UpdateDate" Nullable="false" Precision="23" />
+    <Property Type="Byte" Name="Catogory" Nullable="false" />
+    <Property Type="String" Name="CatogoryName" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="CallCount" Nullable="false" />
+    <Property Type="String" Name="PhoneHash" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="UserGetList_Result">
+    <Property Type="Int64" Name="UserSN" Nullable="false" />
+    <Property Type="String" Name="PhoneHash" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="UpdateDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="PushKey" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DeviceID" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

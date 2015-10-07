@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMFREEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CallUsers">
+    <Key>
+      <PropertyRef Name="EventSN" />
+    </Key>
+    <Property Name="EventSN" Type="bigint" Nullable="false" />
+    <Property Name="UserSN" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="UsersSN" />
+    </Key>
+    <Property Name="UsersSN" Type="bigint" Nullable="false" />
+    <Property Name="PhoneHash" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="EventsN" />
+    </Key>
+    <Property Name="EventsN" Type="bigint" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="Catogory" Type="tinyint" Nullable="false" />
+    <Property Name="CatogoryName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CallCount" Type="int" Nullable="false" />
+    <Property Name="PhoneHash" Type="text" Nullable="false" />
+    <Property Name="IsDelete" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InstallUsers">
+    <Key>
+      <PropertyRef Name="UserSN" />
+    </Key>
+    <Property Name="UserSN" Type="bigint" Nullable="false" />
+    <Property Name="UserSN_Object" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserEvents">
+    <Key>
+      <PropertyRef Name="UserSN" />
+      <PropertyRef Name="EventsN" />
+    </Key>
+    <Property Name="UserSN" Type="bigint" Nullable="false" />
+    <Property Name="EventsN" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserSN" />
+    </Key>
+    <Property Name="UserSN" Type="bigint" Nullable="false" />
+    <Property Name="PhoneHash" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="PushKey" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Function Name="ContactCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UsersSN" Type="bigint" Mode="In" />
+    <Parameter Name="PhoneHash" Type="varchar" Mode="In" />
+    <Parameter Name="PhoneName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ContactGetInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UsersSN" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="ContactGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UsersSN" Type="bigint" Mode="In" />
+    <Parameter Name="TotalCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ContactUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UsersSN" Type="bigint" Mode="In" />
+    <Parameter Name="PhoneHash" Type="varchar" Mode="In" />
+    <Parameter Name="PhoneName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EventCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Catogory" Type="tinyint" Mode="In" />
+    <Parameter Name="CatogoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PhoneHash" Type="text" Mode="In" />
+    <Parameter Name="EventSN" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="EventGetInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EventSN" Type="bigint" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="InOut" />
+    <Parameter Name="UpdateDate" Type="datetime" Mode="InOut" />
+    <Parameter Name="Catogory" Type="tinyint" Mode="InOut" />
+    <Parameter Name="CatogoryName" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="CallCount" Type="int" Mode="InOut" />
+    <Parameter Name="PhoneHash" Type="text" Mode="InOut" />
+  </Function>
+  <Function Name="EventGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TotalCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EventUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EventSN" Type="bigint" Mode="In" />
+    <Parameter Name="Catogory" Type="tinyint" Mode="In" />
+    <Parameter Name="CatogoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CallCount" Type="int" Mode="In" />
+    <Parameter Name="PhoneHash" Type="text" Mode="In" />
+    <Parameter Name="IsDelete" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="InstallUserCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="UserSN_Object" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="InstallUserGetInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="UserSN_Object" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="InstallUserGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="TotalCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="InstallUserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="UserSN_Object" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="UserCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PhoneHash" Type="varchar" Mode="In" />
+    <Parameter Name="PushKey" Type="varchar" Mode="In" />
+    <Parameter Name="DeviceID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UserEventCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="Catogory" Type="tinyint" Mode="In" />
+    <Parameter Name="CatogoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PhoneHash" Type="text" Mode="In" />
+  </Function>
+  <Function Name="UserEventGetInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="EventSN" Type="bigint" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="InOut" />
+    <Parameter Name="UpdateDate" Type="datetime" Mode="InOut" />
+    <Parameter Name="Catogory" Type="tinyint" Mode="InOut" />
+    <Parameter Name="CatogoryName" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="CallCount" Type="int" Mode="InOut" />
+    <Parameter Name="PhoneHash" Type="text" Mode="InOut" />
+  </Function>
+  <Function Name="UserEventGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="TotalCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="UserEventUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="EventSN" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="UserGetInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="PhoneHash" Type="varchar" Mode="InOut" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="InOut" />
+    <Parameter Name="UpdateDate" Type="datetime" Mode="InOut" />
+    <Parameter Name="PushKey" Type="varchar" Mode="InOut" />
+    <Parameter Name="DeviceID" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="UserGetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TotalCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="UserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserSN" Type="bigint" Mode="In" />
+    <Parameter Name="PhoneHash" Type="varchar" Mode="In" />
+    <Parameter Name="PushKey" Type="varchar" Mode="In" />
+    <Parameter Name="DeviceID" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="IMFREEModelStoreContainer">
+    <EntitySet Name="CallUsers" EntityType="Self.CallUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InstallUsers" EntityType="Self.InstallUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserEvents" EntityType="Self.UserEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

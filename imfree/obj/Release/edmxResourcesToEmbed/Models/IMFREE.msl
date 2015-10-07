@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IMFREEModelStoreContainer" CdmEntityContainer="IMFREEEntities">
+    <EntitySetMapping Name="AcceptedUser">
+      <EntityTypeMapping TypeName="IMFREEModel.AcceptedUser">
+        <MappingFragment StoreEntitySet="AcceptedUser">
+          <ScalarProperty Name="suggestsn" ColumnName="suggestsn" />
+          <ScalarProperty Name="hashphone" ColumnName="hashphone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="IMFREEModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="categorysn" ColumnName="categorysn" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+          <ScalarProperty Name="iconfilename" ColumnName="iconfilename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="IMFREEModel.Contacts">
+        <MappingFragment StoreEntitySet="Contacts">
+          <ScalarProperty Name="usersn" ColumnName="usersn" />
+          <ScalarProperty Name="hashphone" ColumnName="hashphone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomReport">
+      <EntityTypeMapping TypeName="IMFREEModel.CustomReport">
+        <MappingFragment StoreEntitySet="CustomReport">
+          <ScalarProperty Name="reportsn" ColumnName="reportsn" />
+          <ScalarProperty Name="report" ColumnName="report" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLog">
+      <EntityTypeMapping TypeName="IMFREEModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="logsn" ColumnName="logsn" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="uri" ColumnName="uri" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="dtcreate" ColumnName="dtcreate" />
+          <ScalarProperty Name="error" ColumnName="error" />
+          <ScalarProperty Name="trace" ColumnName="trace" />
+          <ScalarProperty Name="json" ColumnName="json" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Item">
+      <EntityTypeMapping TypeName="IMFREEModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="categorysn" ColumnName="categorysn" />
+          <ScalarProperty Name="itemsn" ColumnName="itemsn" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="cardfilename" ColumnName="cardfilename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrivateUser">
+      <EntityTypeMapping TypeName="IMFREEModel.PrivateUser">
+        <MappingFragment StoreEntitySet="PrivateUser">
+          <ScalarProperty Name="suggestsn" ColumnName="suggestsn" />
+          <ScalarProperty Name="hashphone" ColumnName="hashphone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suggest">
+      <EntityTypeMapping TypeName="IMFREEModel.Suggest">
+        <MappingFragment StoreEntitySet="Suggest">
+          <ScalarProperty Name="suggestsn" ColumnName="suggestsn" />
+          <ScalarProperty Name="usersn" ColumnName="usersn" />
+          <ScalarProperty Name="hashphone" ColumnName="hashphone" />
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="categorysn" ColumnName="categorysn" />
+          <ScalarProperty Name="itemsn" ColumnName="itemsn" />
+          <ScalarProperty Name="acceptedusercount" ColumnName="acceptedusercount" />
+          <ScalarProperty Name="cancelled" ColumnName="cancelled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IMFREEModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="usersn" ColumnName="usersn" />
+          <ScalarProperty Name="guid" ColumnName="guid" />
+          <ScalarProperty Name="accesstoken" ColumnName="accesstoken" />
+          <ScalarProperty Name="hashphone" ColumnName="hashphone" />
+          <ScalarProperty Name="deviceid" ColumnName="deviceid" />
+          <ScalarProperty Name="pushkey" ColumnName="pushkey" />
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CategoryCreate" FunctionName="IMFREEModel.Store.CategoryCreate" />
+    <FunctionImportMapping FunctionImportName="CategoryDataInit" FunctionName="IMFREEModel.Store.CategoryDataInit" />
+    <FunctionImportMapping FunctionImportName="CategoryDelete" FunctionName="IMFREEModel.Store.CategoryDelete" />
+    <FunctionImportMapping FunctionImportName="CategoryGetInfo" FunctionName="IMFREEModel.Store.CategoryGetInfo" />
+    <FunctionImportMapping FunctionImportName="CategoryGetList" FunctionName="IMFREEModel.Store.CategoryGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.CategoryGetList_Result">
+          <ScalarProperty Name="categorysn" ColumnName="categorysn" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+          <ScalarProperty Name="iconfilename" ColumnName="iconfilename" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CategoryUpdate" FunctionName="IMFREEModel.Store.CategoryUpdate" />
+    <FunctionImportMapping FunctionImportName="CategoryWithItemGetList" FunctionName="IMFREEModel.Store.CategoryWithItemGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.CategoryWithItemGetList_Result">
+          <ScalarProperty Name="categorysn" ColumnName="categorysn" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+          <ScalarProperty Name="iconfilename" ColumnName="iconfilename" />
+          <ScalarProperty Name="itemsn" ColumnName="itemsn" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="cardfilename" ColumnName="cardfilename" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ContactsCreate" FunctionName="IMFREEModel.Store.ContactsCreate" />
+    <FunctionImportMapping FunctionImportName="ContactsDelete" FunctionName="IMFREEModel.Store.ContactsDelete" />
+    <FunctionImportMapping FunctionImportName="ContactsInstallUserList" FunctionName="IMFREEModel.Store.ContactsInstallUserList" />
+    <FunctionImportMapping FunctionImportName="CustomReportCreate" FunctionName="IMFREEModel.Store.CustomReportCreate" />
+    <FunctionImportMapping FunctionImportName="CustomReportGetList" FunctionName="IMFREEModel.Store.CustomReportGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.CustomReportGetList_Result">
+          <ScalarProperty Name="reportsn" ColumnName="reportsn" />
+          <ScalarProperty Name="report" ColumnName="report" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ErrorLogCreate" FunctionName="IMFREEModel.Store.ErrorLogCreate" />
+    <FunctionImportMapping FunctionImportName="ErrorLogGetList" FunctionName="IMFREEModel.Store.ErrorLogGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.ErrorLogGetList_Result">
+          <ScalarProperty Name="logsn" ColumnName="logsn" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="uri" ColumnName="uri" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="dtcreate" ColumnName="dtcreate" />
+          <ScalarProperty Name="error" ColumnName="error" />
+          <ScalarProperty Name="trace" ColumnName="trace" />
+          <ScalarProperty Name="json" ColumnName="json" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ItemCreate" FunctionName="IMFREEModel.Store.ItemCreate" />
+    <FunctionImportMapping FunctionImportName="ItemGetList" FunctionName="IMFREEModel.Store.ItemGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.ItemGetList_Result">
+          <ScalarProperty Name="categorysn" ColumnName="categorysn" />
+          <ScalarProperty Name="itemsn" ColumnName="itemsn" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="cardfilename" ColumnName="cardfilename" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PrivateUserCreate" FunctionName="IMFREEModel.Store.PrivateUserCreate" />
+    <FunctionImportMapping FunctionImportName="SuggestCreate" FunctionName="IMFREEModel.Store.SuggestCreate" />
+    <FunctionImportMapping FunctionImportName="SuggestDelete" FunctionName="IMFREEModel.Store.SuggestDelete" />
+    <FunctionImportMapping FunctionImportName="SuggestFriendList" FunctionName="IMFREEModel.Store.SuggestFriendList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.SuggestFriendList_Result">
+          <ScalarProperty Name="suggestsn" ColumnName="suggestsn" />
+          <ScalarProperty Name="usersn" ColumnName="usersn" />
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="categorysn" ColumnName="categorysn" />
+          <ScalarProperty Name="itemsn" ColumnName="itemsn" />
+          <ScalarProperty Name="acceptedusercount" ColumnName="acceptedusercount" />
+          <ScalarProperty Name="cancelled" ColumnName="cancelled" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SuggestMyList" FunctionName="IMFREEModel.Store.SuggestMyList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.SuggestMyList_Result">
+          <ScalarProperty Name="suggestsn" ColumnName="suggestsn" />
+          <ScalarProperty Name="usersn" ColumnName="usersn" />
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="categorysn" ColumnName="categorysn" />
+          <ScalarProperty Name="itemsn" ColumnName="itemsn" />
+          <ScalarProperty Name="acceptedusercount" ColumnName="acceptedusercount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserCreate" FunctionName="IMFREEModel.Store.UserCreate" />
+    <FunctionImportMapping FunctionImportName="UserGetInfoByToken" FunctionName="IMFREEModel.Store.UserGetInfoByToken" />
+    <FunctionImportMapping FunctionImportName="UserGetInfoByusersn" FunctionName="IMFREEModel.Store.UserGetInfoByusersn" />
+    <FunctionImportMapping FunctionImportName="UserUpdate" FunctionName="IMFREEModel.Store.UserUpdate" />
+  </EntityContainerMapping>
+</Mapping>

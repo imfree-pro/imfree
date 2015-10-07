@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMFREEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AcceptedUser">
+    <Key>
+      <PropertyRef Name="suggestsn" />
+    </Key>
+    <Property Name="suggestsn" Type="Int64" Nullable="false" />
+    <Property Name="hashphone" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categorysn" />
+    </Key>
+    <Property Name="categorysn" Type="Int64" Nullable="false" />
+    <Property Name="categoryname" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="iconfilename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="usersn" />
+      <PropertyRef Name="hashphone" />
+    </Key>
+    <Property Name="usersn" Type="Int64" Nullable="false" />
+    <Property Name="hashphone" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomReport">
+    <Key>
+      <PropertyRef Name="reportsn" />
+    </Key>
+    <Property Name="reportsn" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="report" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="logsn" />
+    </Key>
+    <Property Name="logsn" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="uri" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="source" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="method" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtcreate" Type="DateTime" Precision="3" />
+    <Property Name="error" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="trace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="json" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="categorysn" />
+      <PropertyRef Name="itemsn" />
+    </Key>
+    <Property Name="categorysn" Type="Byte" Nullable="false" />
+    <Property Name="itemsn" Type="Byte" Nullable="false" />
+    <Property Name="itemname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cardfilename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PrivateUser">
+    <Key>
+      <PropertyRef Name="suggestsn" />
+      <PropertyRef Name="hashphone" />
+    </Key>
+    <Property Name="suggestsn" Type="Int64" Nullable="false" />
+    <Property Name="hashphone" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suggest">
+    <Key>
+      <PropertyRef Name="suggestsn" />
+    </Key>
+    <Property Name="suggestsn" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usersn" Type="Int64" Nullable="false" />
+    <Property Name="hashphone" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="createdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="updatedate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="categorysn" Type="Byte" Nullable="false" />
+    <Property Name="itemsn" Type="Byte" Nullable="false" />
+    <Property Name="acceptedusercount" Type="Int32" Nullable="false" />
+    <Property Name="cancelled" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="usersn" />
+    </Key>
+    <Property Name="usersn" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="guid" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="accesstoken" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hashphone" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="deviceid" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="pushkey" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="createdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="updatedate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="IMFREEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AcceptedUser" EntityType="Self.AcceptedUser" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" />
+    <EntitySet Name="CustomReport" EntityType="Self.CustomReport" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" />
+    <EntitySet Name="Item" EntityType="Self.Item" />
+    <EntitySet Name="PrivateUser" EntityType="Self.PrivateUser" />
+    <EntitySet Name="Suggest" EntityType="Self.Suggest" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <FunctionImport Name="CategoryCreate">
+      <Parameter Name="categoryname" Mode="In" Type="String" />
+      <Parameter Name="iconfilename" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CategoryDataInit" />
+    <FunctionImport Name="CategoryDelete" />
+    <FunctionImport Name="CategoryGetInfo" />
+    <FunctionImport Name="CategoryGetList" ReturnType="Collection(IMFREEModel.CategoryGetList_Result)" />
+    <FunctionImport Name="CategoryUpdate">
+      <Parameter Name="categorysn" Mode="In" Type="Byte" />
+      <Parameter Name="categoryname" Mode="In" Type="String" />
+      <Parameter Name="iconfilename" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CategoryWithItemGetList" ReturnType="Collection(IMFREEModel.CategoryWithItemGetList_Result)" />
+    <FunctionImport Name="ContactsCreate">
+      <Parameter Name="usersn" Mode="In" Type="Int64" />
+      <Parameter Name="hashphone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ContactsDelete">
+      <Parameter Name="usersn" Mode="In" Type="Int64" />
+      <Parameter Name="hashphone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ContactsInstallUserList" ReturnType="Collection(String)">
+      <Parameter Name="usersn" Mode="In" Type="Int64" />
+      <Parameter Name="TotalCount" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CustomReportCreate">
+      <Parameter Name="Report" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CustomReportGetList" ReturnType="Collection(IMFREEModel.CustomReportGetList_Result)" />
+    <FunctionImport Name="ErrorLogCreate">
+      <Parameter Name="ip" Mode="In" Type="String" />
+      <Parameter Name="uri" Mode="In" Type="String" />
+      <Parameter Name="source" Mode="In" Type="String" />
+      <Parameter Name="method" Mode="In" Type="String" />
+      <Parameter Name="error" Mode="In" Type="String" />
+      <Parameter Name="trace" Mode="In" Type="String" />
+      <Parameter Name="json" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ErrorLogGetList" ReturnType="Collection(IMFREEModel.ErrorLogGetList_Result)" />
+    <FunctionImport Name="ItemCreate">
+      <Parameter Name="categorysn" Mode="In" Type="Byte" />
+      <Parameter Name="itemname" Mode="In" Type="String" />
+      <Parameter Name="cardfilename" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ItemGetList" ReturnType="Collection(IMFREEModel.ItemGetList_Result)">
+      <Parameter Name="categorysn" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="PrivateUserCreate">
+      <Parameter Name="suggestsn" Mode="In" Type="Int64" />
+      <Parameter Name="hashphone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SuggestCreate">
+      <Parameter Name="suggestsn" Mode="InOut" Type="Int64" />
+      <Parameter Name="usersn" Mode="In" Type="Int64" />
+      <Parameter Name="hashphone" Mode="In" Type="String" />
+      <Parameter Name="categorysn" Mode="In" Type="Byte" />
+      <Parameter Name="itemsn" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="SuggestDelete">
+      <Parameter Name="usersn" Mode="In" Type="Int64" />
+      <Parameter Name="suggestsn" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="SuggestFriendList" ReturnType="Collection(IMFREEModel.SuggestFriendList_Result)">
+      <Parameter Name="usersn" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="SuggestMyList" ReturnType="Collection(IMFREEModel.SuggestMyList_Result)">
+      <Parameter Name="usersn" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="UserCreate">
+      <Parameter Name="usersn" Mode="InOut" Type="Int64" />
+      <Parameter Name="accesstoken" Mode="In" Type="String" />
+      <Parameter Name="guid" Mode="In" Type="String" />
+      <Parameter Name="hashphone" Mode="In" Type="String" />
+      <Parameter Name="deviceid" Mode="In" Type="String" />
+      <Parameter Name="pushkey" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserGetInfoByToken">
+      <Parameter Name="accesstoken" Mode="In" Type="String" />
+      <Parameter Name="usersn" Mode="InOut" Type="Int64" />
+      <Parameter Name="guid" Mode="InOut" Type="String" />
+      <Parameter Name="hashphone" Mode="InOut" Type="String" />
+      <Parameter Name="deviceid" Mode="InOut" Type="String" />
+      <Parameter Name="pushkey" Mode="InOut" Type="String" />
+      <Parameter Name="createdate" Mode="InOut" Type="DateTime" />
+      <Parameter Name="updatedate" Mode="InOut" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UserGetInfoByusersn">
+      <Parameter Name="usersn" Mode="In" Type="Int64" />
+      <Parameter Name="accesstoken" Mode="InOut" Type="String" />
+      <Parameter Name="guid" Mode="InOut" Type="String" />
+      <Parameter Name="hashphone" Mode="InOut" Type="String" />
+      <Parameter Name="deviceid" Mode="InOut" Type="String" />
+      <Parameter Name="pushkey" Mode="InOut" Type="String" />
+      <Parameter Name="createdate" Mode="InOut" Type="DateTime" />
+      <Parameter Name="updatedate" Mode="InOut" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UserUpdate">
+      <Parameter Name="accesstoken" Mode="In" Type="String" />
+      <Parameter Name="guid" Mode="In" Type="String" />
+      <Parameter Name="hashphone" Mode="In" Type="String" />
+      <Parameter Name="deviceid" Mode="In" Type="String" />
+      <Parameter Name="pushkey" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="CategoryGetList_Result">
+    <Property Type="Int64" Name="categorysn" Nullable="false" />
+    <Property Type="String" Name="categoryname" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="iconfilename" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="CategoryWithItemGetList_Result">
+    <Property Type="Int64" Name="categorysn" Nullable="false" />
+    <Property Type="String" Name="categoryname" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="iconfilename" Nullable="true" MaxLength="255" />
+    <Property Type="Byte" Name="itemsn" Nullable="false" />
+    <Property Type="String" Name="itemname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="cardfilename" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="CustomReportGetList_Result">
+    <Property Type="Int64" Name="reportsn" Nullable="false" />
+    <Property Type="String" Name="report" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="ErrorLogGetList_Result">
+    <Property Type="Int64" Name="logsn" Nullable="false" />
+    <Property Type="String" Name="ip" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="uri" Nullable="true" MaxLength="1024" />
+    <Property Type="String" Name="source" Nullable="true" MaxLength="1024" />
+    <Property Type="String" Name="method" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dtcreate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="error" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="trace" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="json" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="ItemGetList_Result">
+    <Property Type="Byte" Name="categorysn" Nullable="false" />
+    <Property Type="Byte" Name="itemsn" Nullable="false" />
+    <Property Type="String" Name="itemname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="cardfilename" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="SuggestFriendList_Result">
+    <Property Type="Int64" Name="suggestsn" Nullable="false" />
+    <Property Type="Int64" Name="usersn" Nullable="false" />
+    <Property Type="DateTime" Name="createdate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="updatedate" Nullable="false" Precision="23" />
+    <Property Type="Byte" Name="categorysn" Nullable="false" />
+    <Property Type="Byte" Name="itemsn" Nullable="false" />
+    <Property Type="Int32" Name="acceptedusercount" Nullable="false" />
+    <Property Type="Byte" Name="cancelled" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SuggestMyList_Result">
+    <Property Type="Int64" Name="suggestsn" Nullable="false" />
+    <Property Type="Int64" Name="usersn" Nullable="false" />
+    <Property Type="DateTime" Name="createdate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="updatedate" Nullable="false" Precision="23" />
+    <Property Type="Byte" Name="categorysn" Nullable="false" />
+    <Property Type="Byte" Name="itemsn" Nullable="false" />
+    <Property Type="Int32" Name="acceptedusercount" Nullable="false" />
+  </ComplexType>
+</Schema>

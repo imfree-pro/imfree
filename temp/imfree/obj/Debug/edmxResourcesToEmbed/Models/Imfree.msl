@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IMFREEModelStoreContainer" CdmEntityContainer="IMFREEEntities">
+    <EntitySetMapping Name="CallUsers">
+      <EntityTypeMapping TypeName="IMFREEModel.CallUsers">
+        <MappingFragment StoreEntitySet="CallUsers">
+          <ScalarProperty Name="EventSN" ColumnName="EventSN" />
+          <ScalarProperty Name="UserSN" ColumnName="UserSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="IMFREEModel.Contacts">
+        <MappingFragment StoreEntitySet="Contacts">
+          <ScalarProperty Name="UsersSN" ColumnName="UsersSN" />
+          <ScalarProperty Name="PhoneHash" ColumnName="PhoneHash" />
+          <ScalarProperty Name="PhoneName" ColumnName="PhoneName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="IMFREEModel.Events">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="EventsN" ColumnName="EventsN" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Catogory" ColumnName="Catogory" />
+          <ScalarProperty Name="CatogoryName" ColumnName="CatogoryName" />
+          <ScalarProperty Name="CallCount" ColumnName="CallCount" />
+          <ScalarProperty Name="PhoneHash" ColumnName="PhoneHash" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InstallUsers">
+      <EntityTypeMapping TypeName="IMFREEModel.InstallUsers">
+        <MappingFragment StoreEntitySet="InstallUsers">
+          <ScalarProperty Name="UserSN" ColumnName="UserSN" />
+          <ScalarProperty Name="UserSN_Object" ColumnName="UserSN_Object" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEvents">
+      <EntityTypeMapping TypeName="IMFREEModel.UserEvents">
+        <MappingFragment StoreEntitySet="UserEvents">
+          <ScalarProperty Name="UserSN" ColumnName="UserSN" />
+          <ScalarProperty Name="EventsN" ColumnName="EventsN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IMFREEModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserSN" ColumnName="UserSN" />
+          <ScalarProperty Name="PhoneHash" ColumnName="PhoneHash" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="PushKey" ColumnName="PushKey" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ContactCreate" FunctionName="IMFREEModel.Store.ContactCreate" />
+    <FunctionImportMapping FunctionImportName="ContactGetInfo" FunctionName="IMFREEModel.Store.ContactGetInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.ContactGetInfo_Result">
+          <ScalarProperty Name="PhoneHash" ColumnName="PhoneHash" />
+          <ScalarProperty Name="PhoneName" ColumnName="PhoneName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ContactGetList" FunctionName="IMFREEModel.Store.ContactGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.ContactGetList_Result">
+          <ScalarProperty Name="UsersSN" ColumnName="UsersSN" />
+          <ScalarProperty Name="PhoneHash" ColumnName="PhoneHash" />
+          <ScalarProperty Name="PhoneName" ColumnName="PhoneName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ContactUpdate" FunctionName="IMFREEModel.Store.ContactUpdate" />
+    <FunctionImportMapping FunctionImportName="EventCreate" FunctionName="IMFREEModel.Store.EventCreate" />
+    <FunctionImportMapping FunctionImportName="EventGetInfo" FunctionName="IMFREEModel.Store.EventGetInfo" />
+    <FunctionImportMapping FunctionImportName="EventGetList" FunctionName="IMFREEModel.Store.EventGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.EventGetList_Result">
+          <ScalarProperty Name="EventSN" ColumnName="EventSN" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Catogory" ColumnName="Catogory" />
+          <ScalarProperty Name="CatogoryName" ColumnName="CatogoryName" />
+          <ScalarProperty Name="PhoneHash" ColumnName="PhoneHash" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EventUpdate" FunctionName="IMFREEModel.Store.EventUpdate" />
+    <FunctionImportMapping FunctionImportName="InstallUserCreate" FunctionName="IMFREEModel.Store.InstallUserCreate" />
+    <FunctionImportMapping FunctionImportName="InstallUserGetInfo" FunctionName="IMFREEModel.Store.InstallUserGetInfo" />
+    <FunctionImportMapping FunctionImportName="InstallUserGetList" FunctionName="IMFREEModel.Store.InstallUserGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.InstallUserGetList_Result">
+          <ScalarProperty Name="UserSN" ColumnName="UserSN" />
+          <ScalarProperty Name="UserSN_Object" ColumnName="UserSN_Object" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InstallUserUpdate" FunctionName="IMFREEModel.Store.InstallUserUpdate" />
+    <FunctionImportMapping FunctionImportName="UserCreate" FunctionName="IMFREEModel.Store.UserCreate" />
+    <FunctionImportMapping FunctionImportName="UserEventCreate" FunctionName="IMFREEModel.Store.UserEventCreate" />
+    <FunctionImportMapping FunctionImportName="UserEventGetInfo" FunctionName="IMFREEModel.Store.UserEventGetInfo" />
+    <FunctionImportMapping FunctionImportName="UserEventGetList" FunctionName="IMFREEModel.Store.UserEventGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.UserEventGetList_Result">
+          <ScalarProperty Name="UserSN" ColumnName="UserSN" />
+          <ScalarProperty Name="EventSN" ColumnName="EventSN" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Catogory" ColumnName="Catogory" />
+          <ScalarProperty Name="CatogoryName" ColumnName="CatogoryName" />
+          <ScalarProperty Name="CallCount" ColumnName="CallCount" />
+          <ScalarProperty Name="PhoneHash" ColumnName="PhoneHash" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserEventUpdate" FunctionName="IMFREEModel.Store.UserEventUpdate" />
+    <FunctionImportMapping FunctionImportName="UserGetInfo" FunctionName="IMFREEModel.Store.UserGetInfo" />
+    <FunctionImportMapping FunctionImportName="UserGetList" FunctionName="IMFREEModel.Store.UserGetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IMFREEModel.UserGetList_Result">
+          <ScalarProperty Name="UserSN" ColumnName="UserSN" />
+          <ScalarProperty Name="PhoneHash" ColumnName="PhoneHash" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="PushKey" ColumnName="PushKey" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserUpdate" FunctionName="IMFREEModel.Store.UserUpdate" />
+  </EntityContainerMapping>
+</Mapping>
