@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ColorPrimary">#03a9f4</color>
+    <color name="ColorPrimaryDark">#0080FF</color>
+    <color name="TextColorPrimary">#FFFFFF</color>
+
+    <color name="TextLeftSelectedColor">#03A9F4</color>
+    <color name="TextLeftTextColor">#000000</color>
+    <color name="NavigationDrawerBackGroundColor">#FFFFFF</color>
+    <color name="NavigationDrawerSelection">#42A5F5</color>
+    <color name="NavigationDrawerUnSelection">#000000</color>
+
+    <color name="ListItemSelection">#EEEEEE</color>
+    <color name="ListItemUnSelection">#FFFFFF</color>
+
+    <color name="SlidingTabBackGroundColor">#03A9F4</color>
+
+    <color name="SlidingTabTextSelected">#FFFFFF</color>
+    <color name="SlidingTabTextUnSelected">#88FFFFFF</color>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="activate_text_color">#FF666666</color>
+    <color name="deactivate_text_color">#FFCCCCCC</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="TextPopupCountColor">#039BE5</color>
+
+    <color name="TextFriendCheckCount">#B1EAF1</color>
+
+    <color name="TextCardView">#000000</color>
+
+
+    <color name="thumbColor">#66aaaaaa</color>
+</resources>

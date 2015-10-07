@@ -1,21 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.imfree.imclient" >
+    package="com.imfree.imfree" >
 
+    <uses-sdk android:minSdkVersion="7" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="12" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
     <application
+        android:name="com.application.ImFreeApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ImFree"
-            android:label="@string/app_name" >
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FriendSuggestActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".MySuggestActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".InUseFriendActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".InUseFriendBySuggestActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".InviteFriendActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".AddSuggestCategoryActivity"
+            android:label="@string/title_activity_add_suggest_category"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service
+            android:name=".ImFreeService"
+            android:enabled="true" >
+        </service>
+
+        <receiver
+            android:name=".ImFreeReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":remote"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".ImFreeServiceMonitor$MonitorBR" />
     </application>
 
 </manifest>

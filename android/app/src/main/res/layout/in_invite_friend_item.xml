@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="40dp"
+        android:layout_height="72dp"
+        android:paddingLeft="0dp"
+        android:layout_marginLeft="16dp"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_account_circle_pink"
+            android:id="@+id/phoneImage"
+            />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:textColor="@color/NavigationDrawerUnSelection"
+        android:background="?android:attr/activatedBackgroundIndicator"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:text="Medium Text"
+        android:id="@+id/phoneName"
+        />
+    <TextView
+        android:id="@+id/phoneNo"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="@color/NavigationDrawerUnSelection"
+        android:background="?android:attr/activatedBackgroundIndicator"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:paddingRight="16dp"
+        android:gravity="center_vertical|right"
+        />
+
+</LinearLayout>

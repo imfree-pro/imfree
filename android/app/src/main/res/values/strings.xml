@@ -1,6 +1,30 @@
 <resources>
-    <string name="app_name">imclient</string>
+    <string name="app_name">ImFree</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="naviationDrawer_open">naviationDrawer_open</string>
+    <string name="naviationDrawer_close">naviationDrawer_close</string>
+    <string-array name="navigationdrawer_items">
+        <item>친구들의 제안</item>
+        <item>나의 제안</item>
+        <item>-</item>
+        <item>사용 중인 친구들</item>
+        <item>친구 초대</item>
+    </string-array>
+    <string name="title_activity_friend_suggest">FriendSuggestActivity</string>
+    <string name="title_activity_my_suggest">MySuggestActivity</string>
+    <string name="title_activity_in_use_friend">InUseFriendActivity</string>
+    <string name="title_activity_invite_friend">InviteFriendActivity</string>
+    <string name="title_activity_in_use_friend_by_suggest">의 제안</string>
+    <string name="title_activity_add_suggest_category">제안등록 > 카테고리 설정</string>
+
+
+    <string name="crash_dialog_title">에러가 발생</string>
+    <string name="crash_dialog_text">서버로 전송</string>
+    <string name="crash_dialog_ok_toast">전송하였습니다.</string>
+    <string name="crash_toast_text">에러가 발생</string>
+
 </resources>

@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar">
+        </include>
+        <ExpandableListView
+            android:id="@+id/in_suggest_category"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:groupIndicator="@null"
+            android:childDivider="#FFFFFF"
+            android:dividerHeight="0dp"
+            />
+    </LinearLayout>
+</RelativeLayout>

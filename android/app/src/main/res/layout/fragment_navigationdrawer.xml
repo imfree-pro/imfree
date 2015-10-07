@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigationDrawerRecyclerView"
+    android:layout_width="320dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="left"
+    android:background="@color/NavigationDrawerBackGroundColor"
+    android:scrollbars="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+</android.support.v7.widget.RecyclerView>
