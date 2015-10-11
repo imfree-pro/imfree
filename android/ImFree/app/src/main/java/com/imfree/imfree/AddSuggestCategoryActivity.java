@@ -26,7 +26,7 @@ public class AddSuggestCategoryActivity extends ActionBarActivity {
     private ExpandableListView _expandableList;
 
     private ArrayList<CategoryEntity> _categoryList = new ArrayList<CategoryEntity>();
-    private HashMap<Integer, ArrayList<CategoryItemEntity>> _categoryItemList = new HashMap<Integer, ArrayList<CategoryItemEntity>>();
+    private HashMap<String, ArrayList<CategoryItemEntity>> _categoryItemList = new HashMap<String, ArrayList<CategoryItemEntity>>();
     private AddCategoryAdapter _addCategoryAdapter;
     private int lastClickedPosition = -1;
 
@@ -42,10 +42,10 @@ public class AddSuggestCategoryActivity extends ActionBarActivity {
         _expandableList = (ExpandableListView) findViewById(R.id.in_suggest_category);
 
         CategoryHandler categoryHandler = new CategoryHandler(getApplication());
-        ArrayList<CategoryEntity> categoryList = categoryHandler.getCategoryList();
-        HashMap<String, ArrayList<CategoryItemEntity>> catetegoryItemList =  categoryHandler.categoryItemGroupList();
+        _categoryList = categoryHandler.getCategoryList();
+        _categoryItemList =  categoryHandler.categoryItemGroupList();
 
-        _addCategoryAdapter = new AddCategoryAdapter(this, categoryList, catetegoryItemList);
+        _addCategoryAdapter = new AddCategoryAdapter(this, _categoryList, _categoryItemList);
         _expandableList.setAdapter(_addCategoryAdapter);
 
         _expandableList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener(){
