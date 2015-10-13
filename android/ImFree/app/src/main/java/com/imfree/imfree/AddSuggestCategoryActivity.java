@@ -1,5 +1,6 @@
 package com.imfree.imfree;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.handler.CategoryHandler;
 import com.imfree.addsuggest.category.AddCategoryAdapter;
@@ -62,11 +62,13 @@ public class AddSuggestCategoryActivity extends ActionBarActivity {
 
                 if ( _categoryItemList.containsKey(categorySN) )
                 {
-                    Toast.makeText(AddSuggestCategoryActivity.this, (String) _addCategoryAdapter.getGroup(position).getCategoryName() + ( isExpand ? " 열기" : " 닫기" ), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(AddSuggestCategoryActivity.this, (String) _addCategoryAdapter.getGroup(position).getCategoryName() + ( isExpand ? " 열기" : " 닫기" ), Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
+                    /*
                     Toast.makeText(AddSuggestCategoryActivity.this, (String) _addCategoryAdapter.getGroup(position).getCategoryName() + " 다음으로 이동", Toast.LENGTH_SHORT).show();
+                    */
                 }
 
 
@@ -77,7 +79,21 @@ public class AddSuggestCategoryActivity extends ActionBarActivity {
         _expandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(AddSuggestCategoryActivity.this, (String) _addCategoryAdapter.getChild(groupPosition, childPosition).getItemName() + " 다음으로 이동", Toast.LENGTH_SHORT).show();
+                String categorySN = _addCategoryAdapter.getChild(groupPosition, childPosition).getCategorySN();
+                String itemSN = _addCategoryAdapter.getChild(groupPosition, childPosition).getItemSN();
+                String categoryName = _categoryList.get(groupPosition).getCategoryName();
+                String itemName = _addCategoryAdapter.getChild(groupPosition, childPosition).getItemName();
+
+                Intent intent = new Intent();
+                intent.putExtra("categorySN", categorySN);
+                intent.putExtra("categoryName", categoryName);
+                intent.putExtra("itemSN", itemSN);
+                intent.putExtra("itemName", itemName);
+
+                intent.setClass(AddSuggestCategoryActivity.this, AddSuggestConfirmActivity.class);
+                startActivity(intent);
+                //overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_stable);
+                overridePendingTransition(R.anim.anim_stable, R.anim.anim_stable);
                 return true;
             }
         });

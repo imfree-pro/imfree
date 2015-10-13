@@ -20,6 +20,7 @@
     <string name="title_activity_invite_friend">InviteFriendActivity</string>
     <string name="title_activity_in_use_friend_by_suggest">의 제안</string>
     <string name="title_activity_add_suggest_category">제안등록 > 카테고리 설정</string>
+    <string name="title_activity_add_suggest_confirm">제안등록</string>
 
 
     <string name="crash_dialog_title">에러가 발생</string>
