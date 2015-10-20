@@ -105,6 +105,7 @@ public class AddCategoryAdapter extends BaseExpandableListAdapter {
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
         convertView.setBackgroundResource(isExpanded ? R.color.ListItemSelection : R.color.ListItemUnSelection);
+        lblListHeader.setTextColor(_context.getResources().getColor(isExpanded ? R.color.ListItemTextSelection : R.color.ListItemTextUnSelection));
 
         return convertView;
     }

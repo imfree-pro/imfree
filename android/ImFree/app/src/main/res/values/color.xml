@@ -12,6 +12,8 @@
 
     <color name="ListItemSelection">#EEEEEE</color>
     <color name="ListItemUnSelection">#FFFFFF</color>
+    <color name="ListItemTextSelection">#930EFF</color>
+    <color name="ListItemTextUnSelection">#4f4f4f</color>
 
     <color name="SlidingTabBackGroundColor">#03A9F4</color>
 
@@ -33,5 +35,7 @@
     <color name="thumbColor">#66aaaaaa</color>
 
     <color name="addSuggestBackground">#eeeeee</color>
+    <color name="addSuggestCategoryBackground">#930EFF</color>
+    <color name="addSuggestCategoryItemBackground">#4f4f4f</color>
 
 </resources>

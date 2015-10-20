@@ -91,7 +91,7 @@ public class AddSuggestCategoryActivity extends ActionBarActivity {
                 intent.putExtra("itemName", itemName);
 
                 intent.setClass(AddSuggestCategoryActivity.this, AddSuggestConfirmActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,RESULT_OK);
                 //overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_stable);
                 overridePendingTransition(R.anim.anim_stable, R.anim.anim_stable);
                 return true;
